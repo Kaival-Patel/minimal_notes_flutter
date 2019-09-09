@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'package:notes_by_kaival/reminderNotes.dart';
 import 'package:notes_by_kaival/reminderNotesDatabaseHelper.dart';
 import 'package:notes_by_kaival/syncedNotes.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'sync_notes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -134,6 +135,22 @@ if (state == AppLifecycleState.resumed) {
     Color originalColor= Color(colorval);
     return originalColor;
   }
+  _launchURL() async {
+  const url = 'https://github.com/kaival750';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+_launchURLINSTA() async {
+  const url = 'https://www.instagram.com/kaival.dart/';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -364,6 +381,31 @@ if (state == AppLifecycleState.resumed) {
                           )
                         ],
 
+                      ),
+                    ),
+                    Card(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                      color: Colors.white,
+                      child:
+                       Column(
+                        children: <Widget>[
+                          ExpansionTile(
+                            leading: Icon(Icons.developer_mode,color: Color(0xFF362d45),),
+                            title: Text("Developed By Kaival Patel"),
+                            children: <Widget>[
+                              ListTile(
+                                leading: Icon(Icons.perm_device_information,color: Colors.amber[800],),
+                                title: Text("Github"),
+                                onTap: _launchURL,
+                              ),
+                              ListTile(
+                                leading: Icon(Icons.person,color: Colors.green[900],),
+                                title: Text("Instagram"),
+                                onTap: _launchURLINSTA,
+                              )
+                            ],
+                          )
+                        ],
                       ),
                     ),
                     

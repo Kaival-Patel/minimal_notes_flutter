@@ -304,74 +304,7 @@ class _reminderNotesState extends State<reminderNotes> {
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color:Color(0xFF641fdd)),
       ),
-      drawer: Theme(
-        data: Theme.of(context).copyWith(
-          canvasColor: Color(0xFF641fdd),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: Drawer(
-            child: ListView(
-              children: <Widget>[
-                Card(
-               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                child: ClipRRect(
-                    borderRadius:  BorderRadius.circular(15),
-                     child: isSignedIn?UserAccountsDrawerHeader(
-                      accountEmail:Text(""+user.email),
-                      accountName: Text(""+user.displayName),
-                      currentAccountPicture: CircleAvatar(radius: 30,child: ClipOval(child:Image(image: NetworkImage(user.photoUrl),),)),
-                    ):ListTile(
-                      leading: Icon(Icons.error,color: Colors.red,),
-                      title: Text("Go to Home and SignIn"),
-                      onTap: (){
-                        Navigator.push(context, 
-                          MaterialPageRoute(
-                            builder: (context)=>mainScreen(),
-                          )
-                        );
-                      },
-                    ),
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                  color: Colors.white,
-                  elevation: 0.0,
-                  child: isSignedIn?ListTile(
-                    leading: Icon(Icons.sync,color: Colors.orange,),
-                    title: Text("Sync Reminder Notes",),
-                    onTap: (){
-                      if(oncetapped==false){
-                                    setState(() {
-                                         oncetapped=true; 
-                                        });
-                                    Fluttertoast.showToast(msg:"Tap Again to Sync",toastLength: Toast.LENGTH_SHORT);
-                                        syncData();
-                                        
-                    }
-                    for(int i=0;i<count;i++){
-                               sync_notes.syncMyReminderNotes(int.parse(id[i]), note[i], colorNote[i], user.uid);
-                          }
-                    }
-                  ):ListTile(
-                    leading: Icon(Icons.sync_disabled,color: Colors.grey,),
-                    title: Text("Sign In to Sync"),
-                    onTap: (){
-                      Navigator.push(context, 
-                        MaterialPageRoute(
-                          builder: (context)=>mainScreen(),
-                        )
-                      );
-                    },
-                  ),
-                ),
-
-              ],
-            ),
-          ),
-        ),
-      ),
+      
       backgroundColor: Colors.white,
       body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
