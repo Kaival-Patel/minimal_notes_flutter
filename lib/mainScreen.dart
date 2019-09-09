@@ -814,9 +814,11 @@ _launchURLINSTA() async {
                                 _key.currentState.save();
                                 if(idNoteReminder.length==0){
                                    _insertintonotesreminderdb(1,tc.text,usercolor);
+                                  _showNotificationWithDefaultSound(1);
                                 }
                                 else{
                                   _insertintonotesreminderdb(int.parse(idNoteReminder.last)+1,tc.text,usercolor);
+                                  _showNotificationWithDefaultSound(int.parse(idNoteReminder.last)+1);
                                 }
                                
                               }
