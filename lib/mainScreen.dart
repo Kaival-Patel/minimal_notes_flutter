@@ -814,17 +814,28 @@ _launchURLINSTA() async {
                                 _key.currentState.save();
                                 if(idNoteReminder.length==0){
                                    _insertintonotesreminderdb(1,tc.text,usercolor);
-                                  _showNotificationWithDefaultSound(1);
+                                  setState(() {
+                                   notifyindex=1; 
+                                  });
                                 }
                                 else{
                                   _insertintonotesreminderdb(int.parse(idNoteReminder.last)+1,tc.text,usercolor);
-                                  _showNotificationWithDefaultSound(int.parse(idNoteReminder.last)+1);
+                                 setState(() {
+                                   notifyindex=int.parse(idNoteReminder.last)+1; 
+                                  });
+                            
                                 }
-                               
+                               setState(() {
+                               notifycolor=usercolor.toString();
+                               notifynote=tc.text;
+                               notifytime=datetime; 
+                              });
                               }
+                               await _showNotificationWithDefaultSound(notifyindex);
                               setupScreen();
-                              Navigator.of(context).pop();
-                              SystemChrome.restoreSystemUIOverlays();
+                                  Navigator.of(context).pop();
+                                  SystemChrome.restoreSystemUIOverlays();
+                              
                            }
                            else{
                              Fluttertoast.showToast(
@@ -986,20 +997,20 @@ _launchURLINSTA() async {
                               if(idNoteReminder.isEmpty){
                               _insertintonotesreminderdb(1,note,usercolor);
                               _delete(selectedId);
-                              setupScreen();
+                              notifyindex=1;
                               }
                               else{
                               _insertintonotesreminderdb((int.parse(idNoteReminder.last))+1,note,usercolor);
                               _delete(selectedId);
-                              setupScreen();
+                              notifyindex=int.parse(idNoteReminder.last)+1;
                               }
                               setState(() {
                                notifycolor=usercolor.toString();
                                notifynote=tc.text;
-                               notifyindex=count+1;
                                notifytime=datetime; 
                               });
-                            await _showNotificationWithDefaultSound(remindercounts+1);
+                            await _showNotificationWithDefaultSound(notifyindex);
+                            setupScreen();
                             Navigator.of(context).pop();
                             SystemChrome.restoreSystemUIOverlays();
                          },
