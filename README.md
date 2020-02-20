@@ -1,6 +1,6 @@
 # Minimal Notes
 
-This is most Simplest and minimalist designed Notes App build in flutter, used 
+This is most Simplest and minimalist designed Notes App build in flutter. 
 
 ## Getting Started
 
