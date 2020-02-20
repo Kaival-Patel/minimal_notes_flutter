@@ -1,16 +1,13 @@
-# notes_by_kaival
+# Minimal Notes
 
-A new Flutter project.
+This is most Simplest and minimalist designed Notes App build in flutter, used 
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Flutter application,used External Library for Scheduled Notifications for Reminders,Firebase for connectivity and sync,DateTime Picker for choosing date and time for Reminders.
 
-A few resources to get you started if this is your first Flutter project:
+## Coding along with Learning
+Started this project alongwith learning the flutter and exploring widgets like modalbottomsheets and more.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Trained Flutter Developer from LearnCodeOnline.com
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
